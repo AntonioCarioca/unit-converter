@@ -171,4 +171,93 @@ class UnitConverter
 		// Return the rounded result
 		return round($result, $decimalPlaces);
 	}
+
+	/**
+	 * Converts values between Temperatures units.
+	 * @param  float  $value         Numeric value to convert.
+	 * @param  string $from          Source unit (e.g., 'C', 'F', 'K', 'R').
+	 * @param  string $to            Target unit (e.g., 'C', 'F', 'K', 'R').
+	 * @param  int    $decimalPlaces Number of decimal places in the result.
+	 * @return float                 Converted value, rounded to given precision.
+	 *
+	 * @throws InvalidArgumentException If the value is not numeric or if units are not supported.
+	 */
+	public function convertTemperature(
+		float $value,
+		string $from,
+		string $to,
+		int $decimalPlaces = 2
+	): float
+	{
+		// List of supported temperature units
+		$units = ['C','F','K','R'];
+
+		// Validate that the value is numeric
+		if (!is_numeric($value)) {
+			throw new InvalidArgumentException("The value provided is not numerical.");
+		}
+
+		// Validate the source unit
+		if (!in_array($from, $units)) {
+			throw new InvalidArgumentException("Source unit {$from} is not supported");
+		}
+		
+		// Validate the target unit
+		if (!in_array($to, $units)) {
+			throw new InvalidArgumentException("Destination unit {$to} is not supported");
+		}
+
+		// Conversion logic for source unit Celsius (C)
+		if ($from === 'C') {
+			if ($to === 'F') {
+				// Celsius to Fahrenheit
+				$result = ($value * 1.8) + 32;
+			} elseif ($to === 'K') {
+				// Celsius to Kelvin
+				$result = $value + 273.15;
+			} else {
+				// Celsius to Réaumur
+				$result = $value * 0.8;
+			}
+		// Conversion logic for source unit Fahrenheit (F)
+		} elseif ($from === 'F') {
+			if ($to === 'C') {
+				// Fahrenheit to Celsius
+				$result = ($value - 32) * (5/9);
+			} elseif ($to === 'K') {
+				// Fahrenheit to Kelvin
+				$result = ($value - 32) * (5/9) + 273.15;
+			} else {
+				// Fahrenheit to Réaumur
+				$result = ($value - 32) * (4/9);
+			}
+		// Conversion logic for source unit Kelvin (K)
+		} elseif ($from === 'K') {
+			if ($to === 'C') {
+				// Kelvin to Celsius
+				$result = $value - 273.15;
+			} elseif ($to === 'F') {
+				// Kelvin to Fahrenheit
+				$result = ($value - 273.15) * 1.8 + 32;
+			} else {
+				// Kelvin to Réaumur
+				$result = ($value - 273.15) * 4/5;
+			}
+		// Conversion logic for source unit Réaumur (R)
+		} else {
+			if ($to === 'C') {
+				// Réaumur to Celsius
+				$result = $value * 1.25;
+			} elseif ($to === 'F') {
+				// Réaumur to Fahrenheit
+				$result = ($value * 2.25) + 32;
+			} else {
+				// Réaumur to Kelvin
+				$result = ($value * 1.25) + 273.15;
+			}
+		}
+
+		// Return the result rounded to the specified number of decimal places
+		return round($result, $decimalPlaces);
+	}
 }
