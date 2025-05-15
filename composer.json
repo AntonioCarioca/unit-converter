@@ -1,0 +1,25 @@
+{
+	"name": "xxzeroxx/unit-converter",
+	"description": "PHP library for converting units.",
+	"type": "library",
+	"homepage": "https://github.com/AntonioCarioca/unit-converter",
+	"license": "MIT License",
+	"authors": [
+		{
+			"name": "Antonio Silva",
+            "email": "antoniomarcos.silva@protonmail.com",
+            "homepage": "https://antoniosilva.hashnode.dev/",
+            "role": "Systems Development Technician and PHP Developer"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"UnitConverter\\": "src/"
+		}
+	},
+	"require": {
+		"php": "^7.4|^8.0"
+	},
+	"minimum-stability": "stable",
+	"prefer-stable": true
+}
