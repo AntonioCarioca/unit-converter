@@ -260,4 +260,54 @@ class UnitConverter
 		// Return the result rounded to the specified number of decimal places
 		return round($result, $decimalPlaces);
 	}
+
+	/**
+	 * Converts values between areas units.
+	 * @param  float  $value         Numeric value to convert.
+	 * @param  string $from          Source unit (e.g., 'm2', 'cm2', 'km2').
+	 * @param  string $to            Target unit (e.g., 'ha', 'ac', 'ft2').
+	 * @param  int    $decimalPlaces Number of decimal places in the result.
+	 * @return float                 Converted value, rounded to given precision.
+	 *
+	 * @throws InvalidArgumentException If the value is not numeric or if units are not supported.
+	 */
+	public function convertArea(
+		float $value,
+		string $from,
+		string $to,
+		int $decimalPlaces = 2
+	): float
+	{
+		// List of supported area units
+		$units = [
+			'm2'  => 1,           // base
+        	'cm2' => 10000,       // 1 m2 = 10000 cm2
+        	'km2' => 0.000001,    // 1 m2 = 0.000001 km2
+        	'ha'  => 0.0001,      // 1 m2 = 0.0001 ha2
+        	'ac'  => 0.000247105, // 1 m2 = 0.000247105 ac2
+        	'ft2' => 10.7639,     // 1 m2 = 10.7639 ft2
+		];
+
+		// Validate that the value is numeric
+		if (!is_numeric($value)) {
+			throw new InvalidArgumentException("The value provided is not numerical.");
+		}
+
+		// Validate the source unit
+		if (!isset($units[$from])) {
+			throw new InvalidArgumentException("Source unit {$from} is not supported");
+		}
+		
+		// Validate the target unit
+		if (!isset($units[$to])) {
+			throw new InvalidArgumentException("Destination unit {$to} is not supported");
+		}
+
+		// Convert to meters2
+		$toMeters2 = $value / $units[$from];
+		// Convert from meters2 to the target unit
+		$result = $toMeters2 * $units[$to];
+		// Return the result rounded to the specified number of decimal places
+		return round($result, $decimalPlaces);
+	}
 }
