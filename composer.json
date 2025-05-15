@@ -3,7 +3,7 @@
 	"description": "PHP library for converting units.",
 	"type": "library",
 	"homepage": "https://github.com/AntonioCarioca/unit-converter",
-	"license": "MIT License",
+	"license": "MIT",
 	"authors": [
 		{
 			"name": "Antonio Silva",
