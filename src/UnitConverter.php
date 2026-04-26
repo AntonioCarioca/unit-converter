@@ -216,12 +216,18 @@ class UnitConverter
      */
     private function convertTemperatureToCelsius(float $value, string $from): float
     {
-        return match ($from) {
-            'C' => $value,
-            'F' => ($value - 32) * (5 / 9),
-            'K' => $value - 273.15,
-            'R' => $value * 1.25,
-        };
+        switch ($from) {
+            case 'C':
+                return $value;
+            case 'F':
+                return ($value - 32) * (5 / 9);
+            case 'K':
+                return $value - 273.15;
+            case 'R':
+                return $value * 1.25;
+            default:
+                throw new InvalidArgumentException("Source unit {$from} is not supported");
+        }
     }
 
     /**
@@ -229,11 +235,17 @@ class UnitConverter
      */
     private function convertCelsiusToTemperature(float $value, string $to): float
     {
-        return match ($to) {
-            'C' => $value,
-            'F' => ($value * 1.8) + 32,
-            'K' => $value + 273.15,
-            'R' => $value * 0.8,
-        };
+        switch ($to) {
+            case 'C':
+                return $value;
+            case 'F':
+                return ($value * 1.8) + 32;
+            case 'K':
+                return $value + 273.15;
+            case 'R':
+                return $value * 0.8;
+            default:
+                throw new InvalidArgumentException("Destination unit {$to} is not supported");
+        }
     }
 }

@@ -14,6 +14,11 @@ Desenvolvido por [Antonio Silva](https://antoniosilva.hashnode.dev/).
 
 Contact us: antoniomarcos.silva@protonmail.com
 
+## ✅ Requirements
+
+- PHP 8.0 or higher
+- Composer
+
 ## 📦 Installation
 
 Use the [Composer](https://getcomposer.org):
@@ -78,7 +83,7 @@ Supported units:
 Example:
 
 ```php
-echo $converter->convertLength(value: 5, from: 'km', to: 'm'); // 5000.00
+echo $converter->convertLength(5, 'km', 'm'); // 5000.00
 ```
 
 ### `convertMass`
@@ -110,7 +115,7 @@ Supported units:
 Example:
 
 ```php
-$converter->convertMass(value: 2, from: 'kg', to: 'lb'); // 4.41
+$converter->convertMass(2, 'kg', 'lb'); // 4.41
 ```
 
 ### `convertVolume`
@@ -142,7 +147,7 @@ Supported units:
 Example:
 
 ```php
-$converter->convertVolume(value: 1, from: 'l', to: 'ml'); // 1000.00
+$converter->convertVolume(1, 'l', 'ml'); // 1000.00
 ```
 
 ### `convertTemperature`
@@ -172,7 +177,7 @@ Supported units:
 Example:
 
 ```php
-$converter->convertTemperature(value: 0, from: 'C', to: 'F'); // 32.00
+$converter->convertTemperature(0, 'C', 'F'); // 32.00
 ```
 
 ### `convertArea`
@@ -204,22 +209,43 @@ Supported units:
 Example:
 
 ```php
-$converter->convertArea(value: 1, from: 'm2', to: 'ft2'); // 10.76
+$converter->convertArea(1, 'm2', 'ft2'); // 10.76
 ```
 
 ## ⚠️ Error handling
 
 All methods throw `InvalidArgumentException` if:
 
-- The value provided is not numeric;
 - The source or destination unit is not supported.
+
+> The `$value` parameter is typed as `float`, so it should receive a numeric value such as `10`, `10.5` or `1000`.
 
 ```php
 try {
-    echo $converter->convertMass(value: 'abc', from: 'g', to: 'kg');
+    echo $converter->convertMass(1, 'invalid', 'kg');
 } catch (InvalidArgumentException $e) {
-    echo "Erro: " . $e->getMessage(); // "The value provided is not numerical."
+    echo "Erro: " . $e->getMessage(); // "Source unit invalid is not supported"
 }
+```
+
+## ✅ Running tests
+
+Install the development dependencies:
+
+```bash
+composer install
+```
+
+Run the test suite with PHPUnit:
+
+```bash
+composer test
+```
+
+Or directly:
+
+```bash
+./vendor/bin/phpunit
 ```
 
 ## 📝 License
