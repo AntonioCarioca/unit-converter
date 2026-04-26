@@ -34,7 +34,7 @@
 Install via Composer:
 
 ```bash
-composer require phpfiletool/unit-converter
+composer require xxzeroxx/unit-converter
 ```
 
 ## 📖 Usage
