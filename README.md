@@ -7,6 +7,7 @@
 ![GitHub Release](https://img.shields.io/github/v/release/AntonioCarioca/unit-converter?style=for-the-badge&label=RELEASE&labelColor=485460&color=484C89)
 ![GitHub repo size](https://img.shields.io/github/repo-size/AntonioCarioca/unit-converter?style=for-the-badge&labelColor=485460&color=484C89)
 ![GitHub License](https://img.shields.io/github/license/AntonioCarioca/unit-converter?style=for-the-badge&labelColor=485460&color=484C89)
+[![Tests](https://img.shields.io/github/actions/workflow/status/AntonioCarioca/unit-converter/tests.yml?branch=main&style=for-the-badge&label=Tests&labelColor=485460)](https://github.com/AntonioCarioca/unit-converter/actions/workflows/tests.yml)
 
 ## 👤 Author
 
