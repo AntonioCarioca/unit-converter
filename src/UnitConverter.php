@@ -146,7 +146,7 @@ class UnitConverter
 			'gal' => 4.546,   // 1 gal = 4.546 l
 			'cup' => 0.237,   // 1 cup = 0.237 l
 			'oz'  => 0.028,   // 1 oz = 0.028 l
-			'm³'  => 1.000    // 1 m³ = 1.000 l
+			'm³'  => 1000     // 1 m³ = 1000 l
 		];
 
 		// Validate that the value is numeric
@@ -205,6 +205,11 @@ class UnitConverter
 		// Validate the target unit
 		if (!in_array($to, $units)) {
 			throw new InvalidArgumentException("Destination unit {$to} is not supported");
+		}
+
+		// If source and target units are the same, no conversion is needed
+		if ($from === $to) {
+			return round($value, $decimalPlaces);
 		}
 
 		// Conversion logic for source unit Celsius (C)

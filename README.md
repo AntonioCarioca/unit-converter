@@ -3,7 +3,7 @@
 **UnitConverter** is a simple and robust PHP library for converting units of measurement. It supports conversions between lengths, masses, volumes, temperatures and areas. Useful in scientific and educational applications, or any project that requires the manipulation of units.
 
 ![Static Badge](https://img.shields.io/badge/XxZeroxX-FFEF00?style=for-the-badge&label=Author&labelColor=485460)
-![Packagist Version](https://img.shields.io/packagist/v/xxzeroxx/unit-converter?style=for-the-badge&logo=packagist&logoColor=white&labelColor=485460&color=484C89)
+![Packagist Version](https://img.shields.io/packagist/v/xxzeroxx/unit-converter?server=https%3A%2F%2Fpackagist.org&style=for-the-badge&logo=packagist&logoColor=white&labelColor=485460&color=484C89)
 ![GitHub Release](https://img.shields.io/github/v/release/AntonioCarioca/unit-converter?style=for-the-badge&label=RELEASE&labelColor=485460&color=484C89)
 ![GitHub repo size](https://img.shields.io/github/repo-size/AntonioCarioca/unit-converter?style=for-the-badge&labelColor=485460&color=484C89)
 ![GitHub License](https://img.shields.io/github/license/AntonioCarioca/unit-converter?style=for-the-badge&labelColor=485460&color=484C89)
@@ -27,7 +27,7 @@ Or simply include the UnitConverter.php file in your project if you're not using
 ## 🚀 How to use
 
 ```php
-require vendor/autoload.php;
+require 'vendor/autoload.php';
 
 use UnitConverter\UnitConverter;
 
@@ -222,7 +222,7 @@ try {
 }
 ```
 
-## 📝 Licese
+## 📝 License
 
 Distributed under the MIT License. See the [LICENSE](https://github.com/AntonioCarioca/unit-converter?tab=MIT-1-ov-file) file for more information.
 
