@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="UnitConverter is a lightweight PHP 8+ library for converting length, mass, volume, temperature and area units." />
+  <title>UnitConverter Documentation</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-content">
+      <a class="brand" href="#top" aria-label="UnitConverter home">
+        <span class="logo">UC</span>
+        <span>UnitConverter</span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#installation">Installation</a>
+        <a href="#usage">Usage</a>
+        <a href="#methods">Methods</a>
+        <a href="#units">Units</a>
+        <a href="#tests">Tests</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero container">
+      <div>
+        <div class="badge"><span class="badge-dot"></span> PHP 8+ lightweight package</div>
+        <h1>Unit conversion made simple for PHP.</h1>
+        <p class="lead">
+          UnitConverter is a small PHP library for converting length, mass, volume,
+          temperature and area units with a clean and easy-to-use API.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#installation">Get Started</a>
+          <a class="btn btn-outline" href="https://github.com/AntonioCarioca/unit-converter" target="_blank" rel="noopener">View on GitHub</a>
+          <a class="btn btn-outline" href="https://packagist.org/packages/xxzeroxx/unit-converter" target="_blank" rel="noopener">Packagist</a>
+        </div>
+      </div>
+
+      <div class="terminal" aria-label="Code example">
+        <div class="terminal-bar">
+          <span class="circle"></span>
+          <span class="circle"></span>
+          <span class="circle"></span>
+        </div>
+        <pre><code>use UnitConverter\UnitConverter;
+
+$converter = new UnitConverter();
+
+$result = $converter->convertLength(
+    value: 1,
+    from: 'km',
+    to: 'm'
+);
+
+// 1000.00</code></pre>
+      </div>
+    </section>
+
+    <section class="container" id="features">
+      <h2>Features</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Simple API</h3>
+          <p>Use direct methods like <code>convertLength()</code>, <code>convertMass()</code> and <code>convertTemperature()</code>.</p>
+        </article>
+        <article class="card">
+          <h3>PHP 8+</h3>
+          <p>The package targets modern PHP versions and can be installed using Composer.</p>
+        </article>
+        <article class="card">
+          <h3>Tested</h3>
+          <p>Includes PHPUnit tests and a GitHub Actions workflow for automated checks.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container" id="installation">
+      <h2>Installation</h2>
+      <p>Install the package using Composer:</p>
+      <div class="terminal"><pre><code>composer require xxzeroxx/unit-converter</code></pre></div>
+    </section>
+
+    <section class="container" id="usage">
+      <h2>Basic Usage</h2>
+      <div class="terminal"><pre><code>&lt;?php
+
+require 'vendor/autoload.php';
+
+use UnitConverter\UnitConverter;
+
+$converter = new UnitConverter();
+
+echo $converter->convertLength(100, 'cm', 'm'); // 1.00
+echo $converter->convertMass(1000, 'g', 'kg'); // 1.00
+echo $converter->convertVolume(1, 'm³', 'l'); // 1000.00
+echo $converter->convertTemperature(0, 'C', 'F'); // 32.00
+echo $converter->convertArea(1, 'm2', 'cm2'); // 10000.00</code></pre></div>
+    </section>
+
+    <section class="container" id="methods">
+      <h2>Available Methods</h2>
+
+      <article class="card method">
+        <div class="method-title">
+          <h3><code>convertLength()</code></h3>
+          <span class="tag">Length</span>
+        </div>
+        <pre><code>public function convertLength(float $value, string $from, string $to, int $decimalPlaces = 2): float</code></pre>
+        <p>Converts values between length units.</p>
+      </article>
+
+      <article class="card method">
+        <div class="method-title">
+          <h3><code>convertMass()</code></h3>
+          <span class="tag">Mass</span>
+        </div>
+        <pre><code>public function convertMass(float $value, string $from, string $to, int $decimalPlaces = 2): float</code></pre>
+        <p>Converts values between mass units.</p>
+      </article>
+
+      <article class="card method">
+        <div class="method-title">
+          <h3><code>convertVolume()</code></h3>
+          <span class="tag">Volume</span>
+        </div>
+        <pre><code>public function convertVolume(float $value, string $from, string $to, int $decimalPlaces = 2): float</code></pre>
+        <p>Converts values between volume units.</p>
+      </article>
+
+      <article class="card method">
+        <div class="method-title">
+          <h3><code>convertTemperature()</code></h3>
+          <span class="tag">Temperature</span>
+        </div>
+        <pre><code>public function convertTemperature(float $value, string $from, string $to, int $decimalPlaces = 2): float</code></pre>
+        <p>Converts values between Celsius, Fahrenheit, Kelvin and Réaumur.</p>
+      </article>
+
+      <article class="card method">
+        <div class="method-title">
+          <h3><code>convertArea()</code></h3>
+          <span class="tag">Area</span>
+        </div>
+        <pre><code>public function convertArea(float $value, string $from, string $to, int $decimalPlaces = 2): float</code></pre>
+        <p>Converts values between area units.</p>
+      </article>
+    </section>
+
+    <section class="container" id="units">
+      <h2>Supported Units</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Units</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Length</td>
+              <td><code>m</code>, <code>km</code>, <code>cm</code>, <code>mm</code>, <code>µm</code>, <code>nm</code>, <code>mi</code>, <code>yd</code>, <code>ft</code>, <code>in</code></td>
+              <td><code>convertLength(5, 'km', 'm')</code></td>
+            </tr>
+            <tr>
+              <td>Mass</td>
+              <td><code>kg</code>, <code>g</code>, <code>mg</code>, <code>t</code>, <code>lb</code>, <code>oz</code></td>
+              <td><code>convertMass(2, 'kg', 'lb')</code></td>
+            </tr>
+            <tr>
+              <td>Volume</td>
+              <td><code>l</code>, <code>ml</code>, <code>gal</code>, <code>cup</code>, <code>oz</code>, <code>m³</code></td>
+              <td><code>convertVolume(1, 'm³', 'l')</code></td>
+            </tr>
+            <tr>
+              <td>Temperature</td>
+              <td><code>C</code>, <code>F</code>, <code>K</code>, <code>R</code></td>
+              <td><code>convertTemperature(0, 'C', 'F')</code></td>
+            </tr>
+            <tr>
+              <td>Area</td>
+              <td><code>m2</code>, <code>cm2</code>, <code>km2</code>, <code>ha</code>, <code>ac</code>, <code>ft2</code></td>
+              <td><code>convertArea(1, 'm2', 'ft2')</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="container" id="errors">
+      <h2>Error Handling</h2>
+      <p>When a source or destination unit is not supported, the library throws an <code>InvalidArgumentException</code>.</p>
+      <div class="terminal"><pre><code>try {
+    $converter->convertLength(10, 'invalid', 'm');
+} catch (InvalidArgumentException $exception) {
+    echo $exception->getMessage();
+}</code></pre></div>
+    </section>
+
+    <section class="container" id="tests">
+      <h2>Running Tests</h2>
+      <p>Run the test suite with Composer:</p>
+      <div class="terminal"><pre><code>composer test</code></pre></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      Developed by <a href="https://antoniosilva.hashnode.dev/" target="_blank" rel="noopener">Antonio Silva</a> · MIT License
+    </div>
+  </footer>
+</body>
+</html>
